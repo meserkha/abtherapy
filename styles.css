@@ -6,28 +6,28 @@
 
 :root {
   /* Surfaces */
-  --paper:        #F2ECE0;   /* primary cream background */
-  --paper-2:      #EDE5D4;   /* slightly darker paper tone */
-  --paper-3:      #E5DBC4;   /* deepest paper / inset blocks */
-  --mist:         #DEE5D5;   /* sage / mint accent */
-  --mist-soft:    #ECEFE3;   /* paler mist */
+  --paper:        #F6F8F4;   /* near-white with subtle green undertone */
+  --paper-2:      #EDF0E9;   /* pale sage-white */
+  --paper-3:      #E2E7DC;   /* light sage for inset blocks */
+  --mist:         #D2DDD0;   /* cool sage accent */
+  --mist-soft:    #EBF0E7;   /* pale sage mist */
 
   /* Contrast */
-  --clay:         #6E5E4E;   /* warm taupe (Kate's dark blocks) */
-  --clay-deep:    #43382C;
-  --walnut:       #5A3F26;
+  --clay:         #4A5E47;   /* deep sage (replaces warm taupe) */
+  --clay-deep:    #2C3D29;   /* forest green (replaces dark brown) */
+  --walnut:       #3B5438;   /* mid-green (replaces brown) */
 
   /* Type */
-  --ink:          #1F1A14;
-  --ink-2:        #463E33;
-  --ink-3:        #75695A;
-  --ink-on-dark:  #F6F0E2;
-  --ink-on-dark-soft: #D9CFBA;
+  --ink:          #191D18;   /* near-black with green undertone */
+  --ink-2:        #374535;   /* dark sage text */
+  --ink-3:        #5E7259;   /* medium sage */
+  --ink-on-dark:  #F1F5EE;   /* cool near-white on dark */
+  --ink-on-dark-soft: #C4D0C0; /* sage-tinted soft light text */
 
   /* Lines & accents */
-  --rule:         #BFB29A;
-  --rule-soft:    #D8CDB6;
-  --accent:       #3F4A33;   /* deep olive */
+  --rule:         #B4C4B0;   /* sage border */
+  --rule-soft:    #CAD6C6;   /* soft sage border */
+  --accent:       #365C31;   /* vivid sage-green for CTAs */
 
   /* Layout */
   --max:          1320px;
@@ -206,7 +206,7 @@ ol, ul { margin: 0; padding: 0; }
 .nav__cta svg { width: 12px; height: 12px; }
 .nav__menu {
   display: none;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   border-radius: 999px;
   border: 1px solid var(--rule);
   background: transparent;
@@ -1519,4 +1519,52 @@ ol, ul { margin: 0; padding: 0; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ MOBILE IMPROVEMENTS ============ */
+
+/* Nav dropdown: larger tap targets for mobile links */
+@media (max-width: 1000px) {
+  .nav.is-open .nav__links a {
+    padding: 10px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Hero CTA: stack buttons full-width on small phones */
+@media (max-width: 480px) {
+  .hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero {
+    padding-top: 32px;
+    padding-bottom: 40px;
+  }
+}
+
+/* Form inputs: comfortable tap target on mobile */
+@media (max-width: 600px) {
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field select {
+    min-height: 48px;
+  }
+}
+
+/* Reduce heavy vertical padding on very small screens */
+@media (max-width: 480px) {
+  .welcome, .about__body, .specs, .services-wrap,
+  .invest, .faq-wrap, .contact-wrap {
+    padding-block: 48px;
+  }
+  .slab { padding-block: 48px; }
+  .page-head { padding-block: 40px 32px; }
 }
